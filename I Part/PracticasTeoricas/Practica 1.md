@@ -41,6 +41,12 @@ b) Cuando una enumeración total de la población se realiza con carácter ofici
 
 c) La persona que proporciona la información sobre el elemento de estudio, sin ser necesariamente la unidad de estudio, se llama _______________.
 
+d) Un error que no es debido al azar, sino de naturaleza sistemática y no cuantificable, se conoce como _______________.
+
+e) La clasificación, medición o conteo obtenido de una característica en estudio se llama _______________.
+
+f) Un error propio de la naturaleza aleatoria de la muestra, que puede limitarse cambiando el tamaño muestral, se llama _______________.
+
 --- ---
 
 # RESPUESTAS
@@ -53,9 +59,9 @@ b) Población: todos los niños y niñas menores de 5 años, residentes en Costa
 
 c)
 
-Peso: cuantitativa continua
-Sexo: atributo nominal
-Zona de residencia: atributo nominal
+- Peso: cuantitativa continua
+- Sexo: atributo nominal
+- Zona de residencia: atributo nominal
 
 d) Por muestreo, ya que solo se seleccionaron 600 niños y niñas, no la totalidad de la población.
 
@@ -71,15 +77,10 @@ d) Debe reunir representatividad (representar fielmente a la población) y/o ale
 
 Ejemplo 3
 
-a) muestra
-b) censo
-c) informante
-d) sesgo
-e) dato
-f) error de muestreo
+- a) muestra
+- b) censo
+- c) informante
+- d) sesgo
+- e) dato
+- f) error de muestreo
 
-d) Un error que no es debido al azar, sino de naturaleza sistemática y no cuantificable, se conoce como _______________.
-
-e) La clasificación, medición o conteo obtenido de una característica en estudio se llama _______________.
-
-f) Un error propio de la naturaleza aleatoria de la muestra, que puede limitarse cambiando el tamaño muestral, se llama _______________.
