@@ -37,38 +37,139 @@ Es una nota específica colocada al final del cuadro, antes de la fuente, con el
 ### Fuente
 Indica el origen de los datos, al final del cuadro.
 
+
 ## Ejemplo de tabla
+
 
 | Encabezado | Encabezado | Encabezado | Encabezado |
 |:------------:|:------------:|:------------:|:------------:|
-|     .      |            |            |            |
-| Col. Matriz| Texto      | Dato       |            |
-| Total      |            |            |            |
+|     .      |            |            |            |
+| Col. Matriz| Texto      | Dato       |            |
+| Total      |            |            |            |
+
 
 ## Formas de calcular porcentajes
 - Porcentaje por columna
 - Porcentaje por fila
 - Porcentaje con respecto al total (Se toma en cuenta múltiples variables)
 
+
 #### Tabla 1: Universidad Nacional. Distribución de estudiantes según cantidad de materias matriculadas. I Ciclo 2021
-| Materias  | Estudiantes | Porcentaje |
+| Materias  | Estudiantes | Porcentaje |
 |:---------:|:-----------:|:----------:|
-|  2  | 7 | 17,5
-|  3  | 10| 25,0
-|  4  | 8 |20,0
-|  6  | 7 |18,5
-|  7  | 8 |20,0
+|  2  | 7 | 17,5
+|  3  | 10| 25,0
+|  4  | 8 |20,0
+|  6  | 7 |18,5
+|  7  | 8 |20,0
 |Total| 40|100,0|
 ##### Fuente: Departamento de Registro
 
+
 #### Tabla 2: Universidad Nacional. Distribución de estudiantes por cantidad de materias matriculadas según zona de residencia. I Ciclo 2021
-| Materias  | Urbano |  | Rural |   |
+| Materias  | Urbano |  | Rural |   |
 |:---------:|:-----------:|:---:|:---:|:---:|
 | | Total |Porcentaje | Total|Porcentaje|
-|  2  | 4 | 21,1 | 3 | 14,3
-|  3  | 5 | 26,3 | 5 | 23,8
-|  4  | 2 | 10,5 | 6 | 28,6
-|  6  | 3 | 15,8 | 4 | 19,0
-|  7  | 5 | 26,3 | 3 | 14,3
+|  2  | 4 | 21,1 | 3 | 14,3
+|  3  | 5 | 26,3 | 5 | 23,8
+|  4  | 2 | 10,5 | 6 | 28,6
+|  6  | 3 | 15,8 | 4 | 19,0
+|  7  | 5 | 26,3 | 3 | 14,3
 |Total| 19| 100,0| 21| 100,0
 ##### Fuente: Departamento de Registro
+
+
+## Gráfica estadísticas
+
+
+Una gráfica es un instrumento que tiene por objeto presentar datos numéricos por medio de magnitudes geométricas.
+#### Se debe tomar en cuenta
+
+
+- La gráfica debe tener proporciones adecuadas.
+- Debe explicarse por sí mismo, por eso debe contar con título, leyendas, símbolos, escalas y fuentes.
+- No se deben incluir muchas series de datos.
+- Las escalas no deben desfigurar hechos o relaciones que se quieren mostrar.
+- Debe ser sencillo, cómodo de interpretar y adecuado al tipo de información que se tiene.
+
+
+### Series estadísticas
+
+
+- Series cuantitativas
+- Series cualitativas
+- Series geográficas
+- Series de tiempo
+
+
+#### Series cuantitativas
+
+
+Son aquellas en la que los datos estadísticos observados se han clasificado de acuerdo con una variable cuantitativa
+
+
+#### Series Cualitativas
+
+
+Se refieren a aquellas clasificaciones en que la característica de interés es una cualidad o atributo.
+
+
+#### Series geográficas
+Se presentan cuando la clasificación está basada en espacios geográficos.
+
+
+#### Series cronológicas o de tiempo
+Son aquellas en las cuales las características observadas han sido
+clasificadas siguiendo un orden de tiempo.
+
+
+### Ejemplos de gráficas
+
+
+- Gráficas de barras
+- Gráficas circulares
+- Gráficas lineales
+- Diagramas de dispersión
+- Pictogramas
+- Histograma
+- Polígono de frecuencia
+- Diagrama de Gantt
+
+
+#### Gráfica de barras
+
+
+- Horizontal: Son cualitativas o geográficas.
+- Vertical: Son cronológicas o cuantitativa discreta.
+#### Pueden ser:
+- Simple: Comportamiento variable.
+- Comparativas: Comparan los componentes de algún evento.
+- Compuestas: Barra dividida en secciones que muestra componentes del fenómeno.
+#### Debe tener:
+- Título.
+- Ejes.
+- Escala.
+- Fuente.
+- Etiquetas.
+- Geometría.
+- Fondo blanco.
+
+
+### Gráfica lineal
+Gráficas de dos dimensiones usadas especialmente para representar series de tiempo o cronológicas.
+#### Pueden ser:
+- Aritmética
+- Logarítmica
+### Gráfica circular
+La gráfica circular es un círculo, el cual se divide en tantos sectores como categorías se tienen en la variable. El área de cada uno de los sectores circulares refleja la importancia de la categoría que representa.
+
+
+
+
+
+
+
+
+
+
+
