@@ -222,6 +222,29 @@ class(a); class(b); class(c)
 
 d <- as.numeric(c) #Transforma bool a numeric
 
+# Funciones ls() y rm()
+
+# Ls() Observar objetos guardados
+ls()
+# Pattern busca similitud
+ls(pattern = "7")
+ls(pattern = "a")
+ls(pattern = "^b") #Inicia con b
+
+# Diferencia asignación = y <-
+class(w = 3)
+class(y <- 7)
+# Igualdad es limitado, contrario a <-
+
+# Funcion c(): Crea vectores con más de 1 elemento
+residencia <- c("urbana","rural","urbana","urbana","rural")
+
+
+
+
+ h <- 60369857
+
+
 
 ```
 
