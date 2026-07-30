@@ -239,12 +239,29 @@ class(y <- 7)
 # Funcion c(): Crea vectores con más de 1 elemento
 residencia <- c("urbana","rural","urbana","urbana","rural")
 
+numeral <- c(43,44,43,43,45)
 
+# Imprimir
+print(residencia)
+print(numeral)
+print(a)
 
+# Operador []: Permite extraer objeto de la posición indicada
+residencia[3] # Valor único
+residencia[3:4] # Rango de valores
+numeral[c(2,4,5)] # Solamente valores indicados
+numeral[-c(2,5)] # Todos menos los valores indicados
 
- h <- 60369857
+# Secuencias
+# Operador : permite crear securncia entre dos números separados por una unidad
 
+sec <- 2:10
+sec
 
+sec1 <- 0.3:7.7
+sec1
+
+# Función seq(from, to, by)
 
 ```
 
