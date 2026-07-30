@@ -163,8 +163,67 @@ Gráficas de dos dimensiones usadas especialmente para representar series de tie
 ### Gráfica circular
 La gráfica circular es un círculo, el cual se divide en tantos sectores como categorías se tienen en la variable. El área de cada uno de los sectores circulares refleja la importancia de la categoría que representa.
 
+# R
+
+- Ctrl + Enter para ejecutar
+
+``` R
+# Definición de variables
+
+# Asignación y valor Int
+a = 2
+a <-2
+2 -> a
+# Valor string
+b <-"Clase"
+# Booleano T/F
+logico <- T
+# Imprimir en consola
+a
+(c <- T) # Asignación e imprimir
+# Valor no disponible
+nd <- NA
+nd # Para mostrarlo
+# Funciones
+# Formato f(arg1,arg2,...)
+
+# getwd() permite identificar directorio de trabajo
+getwd()
+
+# help() Solicitar ayuda en R
+help(getwd)
+
+# Cambiar directorio de trabajo
+setwd("Route") # "/Users/eduardo/Documents/CursoR"
+
+# Instalar paquetes externos
+install.packages("faraway")
+
+# Cargar Paquete
+library(faraway)
+
+# Observar paquetes instalados
+library()
+
+# Observar contenido de un paquete
+library(help = faraway)
+
+# Función class(): Determina tipo de objeto creado. class(x)
+class(a) #Numeric
+class(b) #Character
+class(c) #Logical
+class(plot) #Function
+class(mtcars) #Data.frame
+
+# Escribir varios códigos en una linea
+class(a); class(b); class(c)
+
+# Definir como numérico
+
+d <- as.numeric(c) #Transforma bool a numeric
 
 
+```
 
 
 
