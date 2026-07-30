@@ -263,6 +263,22 @@ sec1
 
 # Función seq(from, to, by)
 
+sec3 <- seq(from = 0, to = 30, by = 2)
+sec3
+
+# Puede ingresar los argumentos en orden diferente
+sec4 <- seq(by = 2, from = 3, to = 14)
+sec4
+
+# Puede obviarse el nombre de los argumentos
+sec5 <- seq(3, 14, 2)
+sec5
+
+# Argumento by puede no escribirse al tomar valor default
+sec6 <- seq(3,14)
+sec6
+
+
 ```
 
 
