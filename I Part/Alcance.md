@@ -3,6 +3,6 @@
 - Examen 1
 
 ## Contenidos
-- 4 Resumen
+- 5 Resumen
 - 5 Practicas
 - 3 Labs
