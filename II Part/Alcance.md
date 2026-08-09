@@ -5,5 +5,5 @@
 
 ## Contenidos
 - 6 Resumen
-- 7 Practicas
-- 5 Labs
+- 9 Practicas
+- 6 Labs
