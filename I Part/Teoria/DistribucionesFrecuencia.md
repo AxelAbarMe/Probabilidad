@@ -80,15 +80,16 @@ Se ubican al principio o al final de la distribución con el fin de incorporar t
 2. El rango del conjunto de datos está dado por 78 − 52 = 26.
 3. En ancho de cada clase puede obtenerse como: a = 26 ÷ 6 ≈ 5
 
+> Fórmula Punto Medio: Xi = (Li+Ls)/2.  Con Xi siendo punto medio, Li siendo Límite inferior y Ls siendo Límite superior
 
-|Rangos|
-|:---:|
-|50-55
-|55-60
-|60-65
-|65-70
-|70-75
-|75-80
+|Rangos|Punto Medio
+|:---:|:---:|
+|50-55|52,5
+|55-60|57,5
+|60-65|62,5
+|65-70|67,5
+|70-75|72,5
+|75-80|77,5
 
 <img src="../../img/1.4_FrecuenciasTable.png" alt="RangosTabla" width="600">
 
