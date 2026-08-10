@@ -73,6 +73,17 @@ Se refiere al valor central de cada clase, el cual se obtiene al promediar los l
 ### Clases abiertas
 Se ubican al principio o al final de la distribución con el fin de incorporar todos aquellos datos que se apartan mucho,
 
+## Ejemplo Límites de los pesos
+|Rangos|
+|:---:|
+|50-55
+|55-60
+|60-65
+|65-70
+|70-75
+|75-80
+
+<img src="../../img/1.4_FrecuenciasTable.png" alt="RangosTabla" width="600">
 
 
 
