@@ -93,5 +93,46 @@ Se ubican al principio o al final de la distribución con el fin de incorporar t
 
 <img src="../../img/1.4_FrecuenciasTable.png" alt="RangosTabla" width="600">
 
+# Representación gráfica
+Para representar gráficamente una distribución de frecuencias de una variable continua se utilizan: 
+- El histograma
+- El polígono de frecuencias
+- Las ojivas
 
+## Histograma
 
+Es un gráfico de barras verticales en el que las barras no guardan espacios entre sí. Para construirlo se define una escala horizontal y en ella se definen los límites reales de todas las clases de la distribución.
+
+### Ejemplo gráfico
+<img src="https://estadistica-dma.ulpgc.es/cursoR4ULPGC/9c-grafHistograma_files/figure-html/unnamed-chunk-3-1.png" Alt="Histograma" width="500">
+
+### Interpretaciones Generales
+- Forma de la distribución: Muestra visualmente la simetría, sesgo o uniformidad de todos los datos recopilados.
+- Concentración de datos: Identifica rápidamente cuál intervalo de clase agrupa la mayor cantidad de elementos acumulados.
+- Límites reales: Define con precisión dónde empieza y termina cada grupo de datos sin dejar vacíos intermedios.
+
+## Polígono de frecuencia
+
+Es un gráfico de línea en el cual se toman los puntos medios de cada clase para establecer la escala horizontal. La escala vertical está representada por la frecuencia.
+
+### Ejemplo gráfico
+<img src="https://cdn.kastatic.org/ka-perseus-images/9ee45b78c736ce8fb194a2f9bde1e1494a0be8e3.png" Alt="PoligonoFrecuencias" width="500">
+
+### Interpretaciones Generales
+- Tendencia del comportamiento: Permite ver las subidas y bajadas del fenómeno estudiado mediante líneas continuas.
+- Punto central: Utiliza la marca de clase para representar el valor medio de cada intervalo evaluado.
+- Comparación de series: Facilita superponer dos o más distribuciones distintas en un mismo plano cartesiano.
+
+## Ojivas
+
+Es un gráfico de línea en el cual se toman los límites de clase para representar las frecuencias acumuladas menos de o más de.
+
+### Ejemplo gráfico
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2VasEROk4SelZXpYNHuXM9N7eRagnqiWjaDn0GVxJRQE4jY54lcReR4UB&s=10" Alt="Ojivas" width="500">
+
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjju57buTlsMEuomVWS7KHaV6Q9IN1wMS1j8E36PhzlBgXRL3-pMNGCHS4kS1zPfHPu6d8XEGLAp7ZanDSgBfBqL7J56NBnVNMTHl4IhIs1Pib4YrPo6d80o7ypKtOOZlJ4ShVS2mPdz4I/s1600/ojivas.jpg" Alt="Ojivas2" width="500">
+
+### Interpretaciones Generales
+- Análisis acumulativo: Indica cuántos datos se encuentran por encima o por debajo de un valor específico.
+- Cálculo de percentiles: Ayuda a localizar la mediana, cuartiles y porcentajes de posición de forma visual.
+- Trayectoria visual: La curva "menos de" siempre asciende, mientras que la curva "más de" siempre desciende.
