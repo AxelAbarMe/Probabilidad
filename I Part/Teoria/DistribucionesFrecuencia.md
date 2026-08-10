@@ -302,3 +302,230 @@ ggplot(data = datos_estudiantes,
   scale_y_continuous(breaks = seq(0, 10, 2))
  
 ```
+
+---
+
+## Distribución de frecuencia de variables continuas
+
+Ejemplo con la variable talla de la base datos_estudiantes.
+
+```{r, warning=FALSE, message=FALSE}
+# usando la función fdt del paquete fdth
+
+if(!require("fdth")){
+install.packages("fdth")
+library("fdth")
+} # cargar el paquete
+
+
+# determinando el punto de inicio y el punto final
+
+min(datos_estudiantes$talla) # valor mínimo
+max(datos_estudiantes$talla) # valor máximo
+
+# creando la tabla y generando el data frame
+
+dist_continua <- fdt(x = datos_estudiantes$talla, 
+                     start = 150, 
+                     end = 190, 
+                     h = 5)
+
+dist_continua
+
+
+dist_continua <- data.frame(dist_continua)
+
+# eliminando la columna 3
+
+dist_continua <- dist_continua[,c(1,2,4,5,6)] 
+
+colnames(dist_continua) <- c("Estatura", "Frecuencia_Absoluta", "Frecuencia_Porcentaje", "Acumulada_Absoluta", "Acumulada_Porcentaje")
+
+# escribiendo el título
+
+titulo <- c("UNA. Distribución de estudiantes según estatura. I ciclo 2025")
+
+# generando la tabla
+
+hacer.flextable <- function(data) {
+
+# cargando flextable
+
+if(!require("flextable")){
+install.packages("flextable")
+library("flextable")
+}
+  
+# generando la tabla y modificando el ancho de la columna
+# argumento cwidth
+
+dist_continua <- flextable(data = dist_continua,
+                           cwidth = 1)
+
+
+# alineando las columnas
+# función align(x, align, part)
+
+dist_continua <- align(x = dist_continua, 
+                       align = "center", 
+                       part = "all")
+
+
+# agregando el título
+# función set_caption(x, caption)
+
+dist_continua <- set_caption(x = dist_continua,
+                              caption = titulo)
+
+
+# cambiando punto por coma
+# función colformat_double(x, j, decimal.mark, digits, big,mark)
+
+dist_continua <- colformat_double(dist_continua, 
+                                  j=c(3, 5), 
+                                  decimal.mark=",", 
+                                  digits = 2, 
+                                  big.mark = "")
+
+
+# dando formato a los encabezados
+# función separate_header(x)
+
+dist_continua <- separate_header(x = dist_continua)
+
+
+# Se imprime el resultado final
+
+dist_continua
+
+return(autofit(dist_continua))
+}
+
+hacer.flextable(dist_continua)
+```
+
+Fuente:
+
+# Distribución de frecuencia de variables discretas
+
+A continuación se elaborará una tabla que muestre la distribución de frecuencias de una variable discreta.
+
+
+## Cargando la base
+
+```{r}
+# cargando la base
+
+library(readxl)
+datos_estudiantes <- read_excel("/Users/eduardo/Documents/trabajo/curso_R/datos_estudiantes.xlsx") # recordar importar la base y copiar el código generado en la consola en esta línea
+```
+
+
+## Generando la distribución
+
+```{r}
+
+# creando la tabla y generando el data frame
+# escoger nombre de la base y variable a representar
+# en este ejemplo se usará la variable materias matriculadas de la base datos_estudiantes
+
+# conteo de los datos
+
+tabla_1 <- table(datos_estudiantes$creditos) 
+
+# genera los porcentajes
+
+prop_tabla_1 <- prop.table(tabla_1) 
+
+# redondeando a 2 decimales y multiplicando por 100
+
+prop_tabla_1 <- round(prop_tabla_1*100, 2)
+
+porcentaje <- as.vector(prop_tabla_1)
+
+# generando las frecuencias acumuladas
+
+acum_cantidad <- cumsum(tabla_1)
+acum_porcentaje <- cumsum(porcentaje)
+
+# creando el data frame
+
+distribucion <- data.frame(tabla_1, porcentaje, acum_cantidad, acum_porcentaje) 
+
+colnames(distribucion) <- c("Créditos", "Frecuencia_Absoluta", "Frecuencia_Porcentaje", "Acumulada_Absoluta", "Acumulada_Porcentaje")
+ 
+
+# escribiendo el título
+
+titulo <- c("UNA. Distribución de estudiantes según cantidad de créditos aprobados. I ciclo 2025")
+
+
+# generando la función que crea la tabla
+
+hacer.flextable <- function(data) {
+
+# cargando flextable
+
+if(!require("flextable")){
+install.packages("flextable")
+library("flextable")
+}
+  
+# generando la tabla y modificando el ancho de la columna
+# argumento cwidth
+
+distribucion <- flextable(data = distribucion,
+                          cwidth = 1)
+
+
+# alineando las columnas
+# función align(x, align, part)
+
+distribucion <- align(x = distribucion, 
+                      align = "center", 
+                      part = "all")
+
+
+# agregando el título
+# función set_caption(x, caption)
+
+distribucion <- set_caption(x = distribucion,
+                            caption = titulo)
+
+
+# cambiando punto por coma
+# función colformat_double(x, j, decimal.mark, digits, big,mark)
+
+distribucion <- colformat_double(distribucion, 
+                                 j=c(3, 5), 
+                                 decimal.mark=",", 
+                                 digits = 2, 
+                                 big.mark = "")
+
+
+# dando formato a los encabezados
+# función separate_header(x)
+
+distribucion <- separate_header(x = distribucion)
+
+
+# Se imprime el resultado final
+
+distribucion
+
+return(autofit(distribucion))
+}
+
+hacer.flextable(distribucion)
+
+```
+
+
+Fuente: 
+
+
+
+
+
+
+
