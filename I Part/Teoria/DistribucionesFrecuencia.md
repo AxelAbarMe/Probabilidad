@@ -137,6 +137,8 @@ Es un gráfico de línea en el cual se toman los límites de clase para represen
 - Cálculo de percentiles: Ayuda a localizar la mediana, cuartiles y porcentajes de posición de forma visual.
 - Trayectoria visual: La curva "menos de" siempre asciende, mientras que la curva "más de" siempre desciende.
 
+---
+# R
 
 # Histograma (variables continuas)
 
@@ -218,18 +220,9 @@ ggplot(data = datos_estudiantes,
  
 ```
 
-
-
-
-
-
 # Polígono de frecuencias
 
-
 El código que lo genera es el siguiente.
-
-
-
 
 ```{r}
 # determinando los valores mínimo y máximo
@@ -305,7 +298,7 @@ ggplot(data = datos_estudiantes,
 
 ---
 
-## Distribución de frecuencia de variables continuas
+# Distribución de frecuencia de variables continuas
 
 Ejemplo con la variable talla de la base datos_estudiantes.
 
