@@ -74,6 +74,13 @@ Se refiere al valor central de cada clase, el cual se obtiene al promediar los l
 Se ubican al principio o al final de la distribución con el fin de incorporar todos aquellos datos que se apartan mucho,
 
 ## Ejemplo Límites de los pesos
+
+
+1. Al utilizar la fórmula de Sturges se tiene el número de clases adecuado es: 1 + 3,332 ∗ log(40) = 6, 33 ≈ 6
+2. El rango del conjunto de datos está dado por 78 − 52 = 26.
+3. En ancho de cada clase puede obtenerse como: a = 26 ÷ 6 ≈ 5
+
+
 |Rangos|
 |:---:|
 |50-55
