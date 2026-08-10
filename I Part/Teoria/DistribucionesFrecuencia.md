@@ -136,3 +136,169 @@ Es un gráfico de línea en el cual se toman los límites de clase para represen
 - Análisis acumulativo: Indica cuántos datos se encuentran por encima o por debajo de un valor específico.
 - Cálculo de percentiles: Ayuda a localizar la mediana, cuartiles y porcentajes de posición de forma visual.
 - Trayectoria visual: La curva "menos de" siempre asciende, mientras que la curva "más de" siempre desciende.
+
+
+# Histograma (variables continuas)
+
+Utilice la variable talla de la base datos_estudiantes.
+
+El código que lo genera es el siguiente.
+
+```{r}
+# determinando los valores mínimo y máximo
+
+
+min(datos_estudiantes$talla)
+max(datos_estudiantes$talla)
+
+
+# definiendo la base de datos y la variable a graficar
+
+
+ggplot(data = datos_estudiantes,
+       aes(x = talla)) +
+ 
+  # agregando la geometría
+  geom_histogram(breaks = seq(150, 190, 5),
+                 col = 'black',
+                 fill = 'green',
+                 alpha = 0.4,
+                 closed = "left") +
+ 
+  # ver lista de colores en R con la función colors()
+  # rotulando los ejes y agregando título
+ 
+  labs(x = "Estatura",
+       y = "Cantidad",
+       title = "Figura 3. UNA. Distribución de estudiantes según estatura. I ciclo 2025") +
+ 
+  # personaliza el fondo de la gráfica
+  theme_bw() +
+ 
+  theme(plot.background = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank()) +
+ 
+  # personaliza los ejes de la gráfica
+ 
+  # la línea de los ejes
+  theme(axis.line = element_line(color = "black")) +
+ 
+  # el texto de los ejes
+  theme(axis.text.x = element_text(face = "plain",
+                                   size = 11,
+                                   family = "Times",
+                                   angle = 0,
+                                   color = "black"),
+        axis.text.y = element_text(face = "plain",
+                                   size = 11,
+                                   family = "Times",
+                                   angle = 0,
+                                   color = "black",
+                                   hjust = 1),
+        axis.title = element_text(face = "bold",
+                                  size = 11,
+                                  family = "Times")
+  ) +
+ 
+  # personaliza el título de la gráfica
+ 
+  theme(plot.title = element_text(face = "plain",
+                                  size = 11,
+                                  family = "Times"
+                                  )
+  ) +
+
+
+  # modificando la escala de los ejes
+ 
+  scale_x_continuous(breaks = seq(150, 190, 5)) +
+  scale_y_continuous(breaks = seq(0, 10, 2))
+ 
+```
+
+
+
+
+
+
+# Polígono de frecuencias
+
+
+El código que lo genera es el siguiente.
+
+
+
+
+```{r}
+# determinando los valores mínimo y máximo
+
+
+min(datos_estudiantes$talla)
+max(datos_estudiantes$talla)
+
+
+# definiendo la base de datos y la variable a graficar
+
+
+ggplot(data = datos_estudiantes,
+       aes(x = talla)) +
+ 
+  # agregando la geometría
+  geom_freqpoly(breaks = seq(150, 190, 5),
+                 col = 'black',
+                 closed = "left") +
+ 
+  # ver lista de colores en R con la función colors()
+  # rotulando los ejes y agregando título
+ 
+  labs(x = "Estatura",
+       y = "Cantidad",
+       title = "Figura 4. UNA. Distribución de estudiantes según estatura. I ciclo 2025") +
+ 
+  # personaliza el fondo de la gráfica
+  theme_bw() +
+ 
+  theme(plot.background = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank()) +
+ 
+  # personaliza los ejes de la gráfica
+ 
+  # la línea de los ejes
+  theme(axis.line = element_line(color = "black")) +
+ 
+  # el texto de los ejes
+  theme(axis.text.x = element_text(face = "plain",
+                                   size = 10,
+                                   family = "Times",
+                                   angle = 0,
+                                   color = "black"),
+        axis.text.y = element_text(face = "plain",
+                                   size = 11,
+                                   family = "Times",
+                                   angle = 0,
+                                   color = "black",
+                                   hjust = 1),
+        axis.title = element_text(face = "bold",
+                                  size = 11,
+                                  family = "Times")
+  ) +
+ 
+  # personaliza el título de la gráfica
+ 
+  theme(plot.title = element_text(face = "plain",
+                                  size = 11,
+                                  family = "Times"
+                                  )
+  ) +
+
+
+  # modificando la escala de los ejes
+ 
+  scale_x_continuous(breaks = seq(147.5, 192.5, 5)) +
+  scale_y_continuous(breaks = seq(0, 10, 2))
+ 
+```
