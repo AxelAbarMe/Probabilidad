@@ -751,7 +751,29 @@ ggplot(data = datos_estudiantes,
   # scale_y_continuous(breaks = seq())
 ```
 
+## Datos iniciales Rmd
 
+---
+title: "Distribuciones de frecuencias"
+author: "Eduardo Aguilar Fernández"
+date: "2026-03-02"
+output:
+  word_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Cargando la base
+
+```{r cargando_base}
+# cargando la base
+
+library(readxl)
+datos_estudiantes <- read_excel("/Users/eduardo/Documents/trabajo/curso_R/datos_estudiantes.xlsx") # recordar importar la base y copiar el código generado en la consola en esta línea
+```
 
 
 
