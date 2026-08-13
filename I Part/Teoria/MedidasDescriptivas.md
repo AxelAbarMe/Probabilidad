@@ -153,14 +153,15 @@ El 70 % del estudiantado obtuvo una nota de menor o igual a 83 y el 30 % obtuvo 
 
 ### Simétrica
 
-<img src="../../img/1.5_DistSimetrica" Alt="Simetrica" width="400">
+<img src="../../img/1.5_DistSimetrica.png" Alt="Simetrica" width="400">
 
 ### Asimétrica
 
 #### Positiva
-<img src="../../img/1.5_DistAsimetricaPositiva" Alt="Asimetrica Positiva" width="400">
+<img src="../../img/1.5_DistAsimetricaPositiva.png" Alt="Asimetrica Positiva" width="400">
+
 #### Negativa
-<img src="../../img/1.5_DistAsimetricaNegativa" Alt="Asimetrica Negativa" width="400">
+<img src="../../img/1.5_DistAsimetricaNegativa.png" Alt="Asimetrica Negativa" width="400">
 
 ### Usos
 
