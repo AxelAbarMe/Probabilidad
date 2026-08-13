@@ -403,17 +403,6 @@ Fuente:
 
 A continuación se elaborará una tabla que muestre la distribución de frecuencias de una variable discreta.
 
-
-## Cargando la base
-
-```{r}
-# cargando la base
-
-library(readxl)
-datos_estudiantes <- read_excel("/Users/eduardo/Documents/trabajo/curso_R/datos_estudiantes.xlsx") # recordar importar la base y copiar el código generado en la consola en esta línea
-```
-
-
 ## Generando la distribución
 
 ```{r}
