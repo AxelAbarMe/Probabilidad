@@ -121,5 +121,61 @@ Si m es un valor tal que 1 ≤ m ≤ 99 entonces definimos el percentil m a la e
 
 $$P_m = x_{\frac{m}{100}(n+1)}$$
 
+El Pm está dado por el m(n + 1)/100 término de la distribución.
+El Pm es una medida tal que el m % de los datos son menores o iguales a él y el (100 − m) % de los datos son mayores o iguales a él.
 
+|x1|m%|Pm|(100-m)%|xn
+|:--:|:--:|:--:|:--:|:--:|
 
+#### Ejemplo
+
+##### Ejemplo 1:
+
+> Suponga que se tiene información de las notas de un grupo de estudiantes (55, 60, 68, 72, 76, 80, 90, 93). Calcule e interprete el percentil 25.
+
+$$P_{25} = x_{\frac{25}{100}(8+1)} = x_{2.25} \implies x_2 \le x_{2.25} \le x_3 \implies 60 \le P_{25} \le 68$$
+
+$$\frac{68 - 60}{3 - 2} = \frac{P_{25} - 60}{2.25 - 2} \implies 8(0.25) + 60 = P_{25} \implies P_{25} = 62$$
+
+El 25 % del estudiantado obtuvo una nota de menor o igual a 62 y el 75 % obtuvo una nota mayor o igual a 62.
+
+##### Ejemplo 2:
+
+> Suponga que se tiene información de las notas de un grupo de estudiantes (55, 60, 68, 72, 76, 80, 90, 93). Calcule e interprete el percentil 70.
+
+$$P_{70} = x_{\frac{70}{100}(8+1)} = x_{6.3} \implies x_6 \le x_{6.3} \le x_7 \implies 80 \le P_{70} \le 90$$
+
+$$\frac{90 - 80}{7 - 6} = \frac{P_{70} - 80}{6.3 - 6} \implies 10(0.30) + 80 = P_{70} \implies P_{70} = 83$$
+
+El 70 % del estudiantado obtuvo una nota de menor o igual a 83 y el 30 % obtuvo una nota mayor o igual a 83.
+
+## Distribución
+
+### Simétrica
+
+<img src="../../img/1.5_DistSimetrica" Alt="Simetrica" width="400">
+
+### Asimétrica
+
+#### Positiva
+<img src="../../img/1.5_DistAsimetricaPositiva" Alt="Asimetrica Positiva" width="400">
+#### Negativa
+<img src="../../img/1.5_DistAsimetricaNegativa" Alt="Asimetrica Negativa" width="400">
+
+### Usos
+
+* La media es un valor sensible a la presencia de valores extremos dentro del conjunto de los datos.
+* No es recomendado el uso de la media en presencia de distribuciones muy asimétricas.
+* La mediana y la moda no son sensibles a la presencia de estos valores extremos.
+* En distribuciones asimétricas, la moda puede no ser un valor central de la distribución.
+
+## Variabilidad
+
+Se define como las diferencias que muestra cada observación de un conjunto de datos respecto a un valor típico determinado para resumirlos o representarlos.
+
+Medidad más comunes:
+* Rango o recorrido
+* Rango intercuartílico
+* Desviación media
+* Varianza o variancia
+* Desviación estándar
