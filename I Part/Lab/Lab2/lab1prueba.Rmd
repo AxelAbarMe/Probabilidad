@@ -1,0 +1,527 @@
+---
+title: "Laboratorio 1"
+author: "Axel Abarca Méndez"
+date: "2026-09-07"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(readxl)
+salud_mental <- read_excel("C:/Users/axela/Downloads/salud_mental.xlsx")
+```
+
+# Tabla de frecuencias variable Cursos
+
+```{r}
+
+# conteo de los datos
+
+tabla_1 <- table(salud_mental$Cursos) 
+
+# genera los porcentajes
+
+prop_tabla_1 <- prop.table(tabla_1) 
+
+# redondeando a 2 decimales y multiplicando por 100
+
+prop_tabla_1 <- round(prop_tabla_1*100, 2)
+
+porcentaje <- as.vector(prop_tabla_1)
+
+# generando las frecuencias acumuladas
+
+acum_cantidad <- cumsum(tabla_1)
+acum_porcentaje <- cumsum(porcentaje)
+
+# creando el data frame
+
+distribucion <- data.frame(tabla_1, porcentaje, acum_cantidad, acum_porcentaje) 
+
+colnames(distribucion) <- c("Cursos", "Frecuencia_Absoluta", "Frecuencia_Porcentaje", "Acumulada_Absoluta", "Acumulada_Porcentaje")
+ 
+
+# escribiendo el título
+
+titulo <- c("Figura 1. UNA. Distribución de participantes según cantidad de cursos matriculados o impartidos. I ciclo 2026")
+
+
+# generando la función que crea la tabla
+
+hacer.flextable <- function(data) {
+
+# cargando flextable
+
+if(!require("flextable")){
+install.packages("flextable")
+library("flextable")
+}
+  
+# generando la tabla y modificando el ancho de la columna
+# argumento cwidth
+
+distribucion <- flextable(data = distribucion,
+                          cwidth = 1)
+
+
+# alineando las columnas
+# función align(x, align, part)
+
+distribucion <- align(x = distribucion, 
+                      align = "center", 
+                      part = "all")
+
+
+# agregando el título
+# función set_caption(x, caption)
+
+distribucion <- set_caption(x = distribucion,
+                            caption = titulo)
+
+
+# cambiando punto por coma
+# función colformat_double(x, j, decimal.mark, digits, big,mark)
+
+distribucion <- colformat_double(distribucion, 
+                                 j=c(3, 5), 
+                                 decimal.mark=",", 
+                                 digits = 2, 
+                                 big.mark = "")
+
+
+# dando formato a los encabezados
+# función separate_header(x)
+
+distribucion <- separate_header(x = distribucion)
+
+
+# Se imprime el resultado final
+
+distribucion
+
+return(autofit(distribucion))
+}
+
+hacer.flextable(distribucion)
+
+```
+
+
+Fuente: Departamento de Bienestar Estudiantil, Universidad Nacional. Tomado durante el primer ciclo, marzo y mayo 2026.
+
+# Tabla de frecuencias de puntaje de bienestar
+
+```{r, warning=FALSE, message=FALSE}
+# usando la función fdt del paquete fdth
+
+if(!require("fdth")){
+install.packages("fdth")
+library("fdth")
+} # cargar el paquete
+
+
+# determinando el punto de inicio y el punto final
+
+min(salud_mental$Puntaje_Bienestar) # valor mínimo
+max(salud_mental$Puntaje_Bienestar) # valor máximo
+
+# creando la tabla y generando el data frame
+
+dist_continua <- fdt(x = salud_mental$Puntaje_Bienestar, 
+                     start = 20, 
+                     end = 100, 
+                     h = 10)
+
+dist_continua
+
+
+dist_continua <- data.frame(dist_continua)
+
+# eliminando la columna 3
+
+dist_continua <- dist_continua[,c(1,2,4,5,6)] 
+
+colnames(dist_continua) <- c("Puntaje", "Frecuencia_Absoluta", "Frecuencia_Porcentaje", "Acumulada_Absoluta", "Acumulada_Porcentaje")
+
+# escribiendo el título
+
+titulo <- c("Figura 2. UNA. Distribución de participantes según puntaje obtenido en un cuestionario de bienestar psicológico. I ciclo 2026")
+
+# generando la tabla
+
+hacer.flextable <- function(data) {
+
+# cargando flextable
+
+if(!require("flextable")){
+install.packages("flextable")
+library("flextable")
+}
+  
+# generando la tabla y modificando el ancho de la columna
+# argumento cwidth
+
+dist_continua <- flextable(data = dist_continua,
+                           cwidth = 1)
+
+
+# alineando las columnas
+# función align(x, align, part)
+
+dist_continua <- align(x = dist_continua, 
+                       align = "center", 
+                       part = "all")
+
+
+# agregando el título
+# función set_caption(x, caption)
+
+dist_continua <- set_caption(x = dist_continua,
+                              caption = titulo)
+
+
+# cambiando punto por coma
+# función colformat_double(x, j, decimal.mark, digits, big,mark)
+
+dist_continua <- colformat_double(dist_continua, 
+                                  j=c(3, 5), 
+                                  decimal.mark=",", 
+                                  digits = 2, 
+                                  big.mark = "")
+
+
+# dando formato a los encabezados
+# función separate_header(x)
+
+dist_continua <- separate_header(x = dist_continua)
+
+
+# Se imprime el resultado final
+
+dist_continua
+
+return(autofit(dist_continua))
+}
+
+hacer.flextable(dist_continua)
+```
+
+Fuente: Departamento de Bienestar Estudiantil, Universidad Nacional. Tomado durante el primer ciclo, marzo y mayo 2026.
+
+# Gráfico de promedio (Histograma seleccionado)
+
+```{r}
+library(ggplot2)
+# determinando los valores mínimo y máximo
+
+min(salud_mental$Promedio)
+max(salud_mental$Promedio)
+
+# definiendo la base de datos y la variable a graficar
+
+ggplot(data = salud_mental, 
+       aes(x = Promedio)) +
+  
+  # agregando la geometría
+  geom_histogram(breaks = seq(55, 100, 5), 
+                 col = 'black', 
+                 fill = 'green', 
+                 alpha = 0.4, 
+                 closed = "left") +
+  
+  # ver lista de colores en R con la función colors()
+  # rotulando los ejes y agregando título 
+  
+  labs(x = "Promedio",
+       y = "Cantidad",
+       title = "Figura 3. UNA. Distribución de participantes según promedio del participante. I ciclo 2026") +
+  
+  # personaliza el fondo de la gráfica
+  theme_bw() + 
+  
+  theme(plot.background = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank()) +
+  
+  # personaliza los ejes de la gráfica
+  
+  # la línea de los ejes
+  theme(axis.line = element_line(color = "black")) +
+  
+  # el texto de los ejes
+  theme(axis.text.x = element_text(face = "plain", 
+                                   size = 11, 
+                                   family = "serif", 
+                                   angle = 0, 
+                                   color = "black"),
+        axis.text.y = element_text(face = "plain", 
+                                   size = 11, 
+                                   family = "serif", 
+                                   angle = 0, 
+                                   color = "black", 
+                                   hjust = 1),
+        axis.title = element_text(face = "bold", 
+                                  size = 11, 
+                                  family = "serif")
+  ) +
+  
+  # personaliza el título de la gráfica
+  
+  theme(plot.title = element_text(face = "plain",
+                                  size = 11,
+                                  family = "serif"
+                                  )
+  ) +
+
+  # modificando la escala de los ejes
+  
+  scale_x_continuous(breaks = seq(55, 100, 5)) +
+  scale_y_continuous(breaks = seq(0, 10, 2))
+  
+```
+
+Fuente: Departamento de Bienestar Estudiantil, Universidad Nacional. Tomado durante el primer ciclo, marzo y mayo 2026.
+
+# Gráfica para la variable Facultad
+
+```{r, warning=F}
+library(ggplot2) #cargando el paquete ggplot2
+
+ggplot(data = salud_mental, 
+       aes(x = Facultad)) +
+  
+  # agregando la geometría (barras)
+  
+  geom_bar(fill = "lightgreen", 
+           color = "black") +
+  
+  # ver lista de colores en R con la función colors()
+  # rotulando los ejes y agregando título 
+  
+  labs(x = "Facultad",
+       y = "Cantidad",
+       title = "Figura 4. UNA. Distribución de participantes según facultad de procendencia. I ciclo 2026") +
+  
+  # personaliza el fondo de la gráfica
+  theme_bw() + 
+  
+  theme(plot.background = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank()) +
+  
+  # personaliza los ejes de la gráfica
+  
+  # la línea de los ejes
+  theme(axis.line = element_line(color = "black")) +
+  
+  # el texto de los ejes
+  theme(axis.text.x = element_text(face="plain", 
+                                   size=11, 
+                                   family = "serif", 
+                                   angle = 0, 
+                                   color = "black"),
+        axis.text.y = element_text(face = "plain", 
+                                   size=11, 
+                                   family = "serif", 
+                                   angle = 0, 
+                                   color = "black", 
+                                   hjust = 1),
+        axis.title = element_text(face = "bold", 
+                                  size = 11, 
+                                  family = "serif")
+  ) +
+  
+  # personaliza el título de la gráfica
+  
+  theme(plot.title = element_text(face = "plain",
+                                  size = 11,
+                                  family = "serif"
+                                  )
+  ) +
+
+  # la escala de los ejes 
+  
+  scale_y_continuous(breaks = seq(0, 25, 2))
+
+```
+Fuente: Departamento de Bienestar Estudiantil, Universidad Nacional. Tomado durante el primer ciclo, marzo y mayo 2026.
+
+# Gráfica comparativa para variable cursos entre estudiantes y profesores
+
+```{r}
+library(ggplot2) #cargando el paquete ggplot2
+
+# definiendo la base de datos y la variable a graficar
+
+ggplot(data = salud_mental, 
+       aes(x = Cursos)) +
+  
+  # agregando la geometría (barras)
+  
+  geom_bar(aes(fill = Rol),
+           position = "dodge",
+           color = "black") +
+  
+  scale_fill_brewer(palette = "Blues",
+                    name = "Cursos",
+                    breaks = c("Estudiante", "Profesor"),
+                    labels = c("Estudiante", "Profesor")
+                    ) +
+  
+  # rotulando los ejes y agregando título 
+  
+  labs(x = "Cursos",
+       y = "Cantidad",
+       title = "Figura 5. UNA. Distribución de participantes según cantidad 
+       de cursos en los que participan. I ciclo 2026") +
+  
+  # personaliza el fondo de la gráfica
+  theme_bw() + 
+  
+  theme(plot.background = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank()) +
+  
+  # personaliza los ejes de la gráfica
+  
+  # la línea de los ejes
+  theme(axis.line = element_line(color = "black")) +
+  
+  # el texto de los ejes
+  theme(axis.text.x = element_text(face = "plain", 
+                                   size = 11, 
+                                   family = "serif", 
+                                   angle = 0, 
+                                   color = "black"),
+        axis.text.y = element_text(face = "plain", 
+                                   size=11, 
+                                   family = "serif", 
+                                   angle = 0, 
+                                   color = "black", 
+                                   hjust = 1),
+        axis.title = element_text(face = "bold", 
+                                  size = 11, 
+                                  family = "serif")
+  ) +
+  
+  # personaliza el título de la gráfica
+  
+  theme(plot.title = element_text(face = "plain",
+                                  size = 11,
+                                  family = "serif",
+                                  hjust = 0.5
+                                  )
+  ) +
+
+  # la escala de los ejes 
+  
+  scale_x_continuous(breaks = seq(from = 1, to = 7, by = 1))+
+  scale_y_continuous(breaks = seq(from = 0, to = 9, by = 3))
+
+```
+Fuente: Departamento de Bienestar Estudiantil, Universidad Nacional. Tomado durante el primer ciclo, marzo y mayo 2026.
+
+# Gráfica para la variable Puntaje aplicada solamente a profesores
+
+```{r}
+library(ggplot2)
+
+profesores <- subset(salud_mental, Rol == "Profesor")
+
+min(profesores$Puntaje_Bienestar)
+max(profesores$Puntaje_Bienestar)
+
+ggplot(data = profesores, 
+       aes(x = Puntaje_Bienestar)) +
+  geom_histogram(breaks = seq(20, 95, 5),
+                 col = 'black', 
+                 fill = 'lightblue', 
+                 alpha = 0.4,
+                 closed = "left") +
+  labs(x = "Puntaje",
+       y = "Cantidad",
+       title = "Figura 6. UNA. Distribución de docentes según puntaje obtenido del cuestionario de bienestar psicológico. I ciclo 2026") +
+  
+  # personaliza el fondo de la gráfica
+  theme_bw() + 
+  
+  theme(plot.background = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank()) +
+  
+  # personaliza los ejes de la gráfica
+  
+  # la línea de los ejes
+  theme(axis.line = element_line(color = "black")) +
+  
+  # el texto de los ejes
+  theme(axis.text.x = element_text(face = "plain", 
+                                   size = 11, 
+                                   family = "serif", 
+                                   angle = 0, 
+                                   color = "black"),
+        axis.text.y = element_text(face = "plain", 
+                                   size=11, 
+                                   family = "serif", 
+                                   angle = 0, 
+                                   color = "black", 
+                                   hjust = 1),
+        axis.title = element_text(face = "bold", 
+                                  size = 11, 
+                                  family = "serif")
+  ) +
+  
+  # personaliza el título de la gráfica
+  
+  theme(plot.title = element_text(face = "plain",
+                                  size = 11,
+                                  family = "serif",
+                                  hjust = 0.5
+                                  )
+  ) +
+
+  # la escala de los ejes 
+  
+  scale_x_continuous(breaks = seq(from = 20, to = 95, by = 5))+
+  scale_y_continuous(breaks = seq(from = 0, to = 10, by = 2))
+
+```
+Fuente: Departamento de Bienestar Estudiantil, Universidad Nacional. Tomado durante el primer ciclo, marzo y mayo 2026.
+
+# Calculo de medidas para variable Puntaje
+```{r}
+# filtrando solo a los profesores
+profesores <- subset(salud_mental, Rol == "Profesor")
+
+# Media
+mean(x = profesores$Puntaje_Bienestar, na.rm = T)
+```
+El puntaje promedio obtenido por los docentes en el cuestionario de bienestar psicológico es de 56,49 puntos.
+```{r}
+# Mediana
+median(x = profesores$Puntaje_Bienestar, na.rm = T)
+```
+50% de los docentes obtuvo un puntaje de bienestar psicológico de 52,3 puntos o menos, y 50% obtuvo 52,3 puntos o más.
+```{r}
+# Moda
+if(!require("modeest")){
+install.packages("modeest")
+library("modeest")
+}
+mfv(x = profesores$Puntaje_Bienestar, na_rm = T)
+```
+En este caso, la variable Puntaje no presenta una moda clara, ya que ningún valor se repite con mayor frecuencia que los demás (varios puntajes distintos aparecen solo dos veces cada uno). Esto es esperable en variables continuas con muchos valores decimales distintos, donde es poco probable que se repita exactamente el mismo dato.
+```{r}
+# Percentiles 25 y 75
+quantile(x = profesores$Puntaje_Bienestar, probs = c(0.25, 0.75), na.rm = T)
+```
+25% de los docentes obtuvo un puntaje de bienestar psicológico de 39,6 puntos o menos, y 75% obtuvo 39,6 puntos o más. Por otro lado, 75% de los docentes obtuvo un puntaje de 77,45 puntos o menos, y 25% obtuvo 77,45 puntos o más.
+```{r}
+# Desviación estándar
+sd(x = profesores$Puntaje_Bienestar, na.rm = T)
+```
+El puntaje de bienestar psicológico de los docentes varía en promedio 22,48 puntos con respecto a la media.

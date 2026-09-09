@@ -1,0 +1,680 @@
+---
+title: "Práctica de laboratorio"
+author: "Eduardo Aguilar Fernández"
+date: \today
+output:
+  word_document: default
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F, warning = F, message = F)
+```
+
+## R Markdown
+
+## Distribución de la variable Cursos
+
+```{r}
+# cargando la base
+
+if(!require("readxl")){
+install.packages("readxl")
+library("readxl")
+}
+
+salud_mental <- read_excel("C:/Users/axela/Downloads/salud_mental.xlsx")
+```
+
+
+
+
+
+
+Tabla 1
+
+```{r}
+
+# creando la tabla y generando el data frame
+# escoger nombre de la base y variable a representar
+# en este ejemplo se usará la variable materias matriculadas de la base datos_estudiantes
+
+# conteo de los datos
+
+tabla_1 <- table(salud_mental$Cursos) 
+
+# genera los porcentajes
+
+prop_tabla_1 <- prop.table(tabla_1) 
+
+# redondeando a 2 decimales y multiplicando por 100
+
+prop_tabla_1 <- round(prop_tabla_1*100, 2)
+
+porcentaje <- as.vector(prop_tabla_1)
+
+# generando las frecuencias acumuladas
+
+acum_cantidad <- cumsum(tabla_1)
+acum_porcentaje <- cumsum(porcentaje)
+
+# creando el data frame
+
+distribucion <- data.frame(tabla_1, porcentaje, acum_cantidad, acum_porcentaje) 
+
+colnames(distribucion) <- c("Cursos", "Frecuencia_Absoluta", "Frecuencia_Porcentaje", "Acumulada_Absoluta", "Acumulada_Porcentaje")
+ 
+
+# escribiendo el título
+
+titulo <- c("UNA. Distribución de estudiantes y docentes según cantidad de cursos recibidos o impartidos. I ciclo 2026")
+
+
+# generando la función que crea la tabla
+
+hacer.flextable <- function(data) {
+
+# cargando flextable
+
+if(!require("flextable")){
+install.packages("flextable")
+library("flextable")
+}
+  
+# generando la tabla y modificando el ancho de la columna
+# argumento cwidth
+
+distribucion <- flextable(data = distribucion,
+                          cwidth = 1)
+
+
+# alineando las columnas
+# función align(x, align, part)
+
+distribucion <- align(x = distribucion, 
+                      align = "center", 
+                      part = "all")
+
+
+# agregando el título
+# función set_caption(x, caption)
+
+distribucion <- set_caption(x = distribucion,
+                            caption = titulo)
+
+
+# cambiando punto por coma
+# función colformat_double(x, j, decimal.mark, digits, big,mark)
+
+distribucion <- colformat_double(distribucion, 
+                                 j=c(3, 5), 
+                                 decimal.mark=",", 
+                                 digits = 2, 
+                                 big.mark = "")
+
+
+# dando formato a los encabezados
+# función separate_header(x)
+
+distribucion <- separate_header(x = distribucion)
+
+
+# Se imprime el resultado final
+
+distribucion
+
+return(autofit(distribucion))
+}
+
+hacer.flextable(distribucion)
+
+```
+
+Fuente: 
+
+# Distribución de la variable puntaje
+
+Tabla 2
+
+```{r, warning=FALSE, message=FALSE}
+# usando la función fdt del paquete fdth
+
+if(!require("fdth")){
+install.packages("fdth")
+library("fdth")
+}
+# determinando el punto de inicio y el punto final
+
+min(salud_mental$Puntaje_Bienestar) # valor mínimo
+max(salud_mental$Puntaje_Bienestar) # valor máximo
+
+# creando la tabla y generando el data frame
+
+dist_continua <- fdt(x = salud_mental$Puntaje_Bienestar, 
+                     start = 20, 
+                     end = 100, 
+                     h = 10)
+
+
+dist_continua <- data.frame(dist_continua)
+
+# eliminando la columna 3
+
+dist_continua <- dist_continua[,c(1,2,4,5,6)] 
+
+colnames(dist_continua) <- c("Puntaje", "Frecuencia_Absoluta", "Frecuencia_Porcentaje", "Acumulada_Absoluta", "Acumulada_Porcentaje")
+
+
+# escribiendo el título
+
+titulo <- c("UNA. Distribución de estudiantes y docentes según puntaje de bienestar sicológico. I ciclo 2026")
+
+# generando la tabla
+
+hacer.flextable <- function(data) {
+
+# cargando flextable
+
+if(!require("flextable")){
+install.packages("flextable")
+library("flextable")
+}
+  
+# generando la tabla y modificando el ancho de la columna
+# argumento cwidth
+
+dist_continua <- flextable(data = dist_continua,
+                           cwidth = 1)
+
+
+# alineando las columnas
+# función align(x, align, part)
+
+dist_continua <- align(x = dist_continua, 
+                       align = "center", 
+                       part = "all")
+
+
+# agregando el título
+# función set_caption(x, caption)
+
+dist_continua <- set_caption(x = dist_continua,
+                              caption = titulo)
+
+
+# cambiando punto por coma
+# función colformat_double(x, j, decimal.mark, digits, big,mark)
+
+dist_continua <- colformat_double(dist_continua, 
+                                  j=c(3, 5), 
+                                  decimal.mark=",", 
+                                  digits = 2, 
+                                  big.mark = "")
+
+
+# dando formato a los encabezados
+# función separate_header(x)
+
+dist_continua <- separate_header(x = dist_continua)
+
+
+# Se imprime el resultado final
+
+dist_continua
+
+return(autofit(dist_continua))
+}
+
+hacer.flextable(dist_continua)
+
+
+
+```
+Fuente:
+
+
+
+# Histograma (variable Promedio)
+
+Utilice la variable Promedio de la base salud_mental.
+
+El código que lo genera es el siguiente.
+
+Figura 1. 
+
+Universidad Nacional. Distribución de estudiantes y docentes según calificación promedio. I ciclo 2026
+
+```{r}
+# determinando los valores mínimo y máximo
+library(ggplot2)
+min(salud_mental$Promedio)
+max(salud_mental$Promedio)
+
+# definiendo la base de datos y la variable a graficar
+
+ggplot(data = salud_mental, 
+       aes(x = Promedio)) +
+ 
+  # agregando la geometría
+  geom_histogram(breaks = seq(55, 100, 5), 
+                 col = 'black', 
+                 fill = 'green', 
+                 alpha = 0.4, 
+                 closed = "left") +
+  
+  # ver lista de colores en R con la función colors()
+  # rotulando los ejes y agregando título 
+  
+  labs(x = "Promedio",
+       y = "Cantidad",
+       title = "") +
+  
+  # personaliza el fondo de la gráfica
+  theme_bw() + 
+  
+  theme(plot.background = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank()) +
+  
+  # personaliza los ejes de la gráfica
+  
+  # la línea de los ejes
+  theme(axis.line = element_line(color = "black")) +
+  
+  # el texto de los ejes
+  theme(axis.text.x = element_text(face = "plain", 
+                                   size = 11, 
+                                   family = "Times", 
+                                   angle = 0, 
+                                   color = "black"),
+        axis.text.y = element_text(face = "plain", 
+                                   size = 11, 
+                                   family = "Times", 
+                                   angle = 0, 
+                                   color = "black", 
+                                   hjust = 1),
+        axis.title = element_text(face = "bold", 
+                                  size = 11, 
+                                  family = "Times")
+  ) +
+  
+  # personaliza el título de la gráfica
+  
+  theme(plot.title = element_text(face = "plain",
+                                  size = 11,
+                                  family = "Times"
+                                  )
+  ) +
+
+  # modificando la escala de los ejes
+  
+  scale_x_continuous(breaks = seq(55, 100, 5)) +
+  scale_y_continuous(breaks = seq(0, 16, 4))
+  
+```
+
+Fuente: 
+
+
+
+
+
+
+# Gráfica de barras horizontales simples
+
+Utilice la variable Facultad de la base salud_mental
+
+Figura 2. 
+
+Universidad Nacional. Distribución de estudiantes y docentes según facultad de procedencia. I ciclo 2026
+
+```{r}
+library(ggplot2) #cargando el paquete ggplot2
+
+# función ggplot(data, mapping, ...) + geom()
+
+# gráfica de barras la geometría corresponde a geom_bar()
+
+# definiendo la base de datos y la variable a graficar
+
+library(forcats) # para ordenar las barras
+
+ggplot(data = salud_mental, 
+       aes(x = fct_infreq(Facultad))) + 
+  
+  # agregando la geometría (barras)
+  
+  geom_bar(fill = "lightgreen", 
+           color = "black") + 
+  
+  # colocando las barras en posición horizontal
+  coord_flip() + 
+  
+  # ver lista de colores en R con la función colors()
+  # rotulando los ejes y agregando título 
+  
+  labs(x = "Facultad",
+       y = "Cantidad",
+       title = ""
+       ) +
+  
+  # personaliza el fondo de la gráfica
+  theme_bw() + 
+  
+  theme(plot.background = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank()) +
+  
+  # personaliza los ejes de la gráfica
+  
+  # la línea de los ejes
+  theme(axis.line = element_line(color = "black")) +
+  
+  # el texto de los ejes
+  theme(axis.text.x = element_text(face = "plain", 
+                                   size = 11, 
+                                   family = "Times", 
+                                   angle = 0, 
+                                   color = "black"),
+        axis.text.y = element_text(face = "plain", 
+                                   size=11, 
+                                   family = "Times", 
+                                   angle = 0, 
+                                   color = "black", 
+                                   hjust = 1),
+        axis.title = element_text(face = "bold", 
+                                  size = 11, 
+                                  family = "Times")
+  ) +
+  
+  # personaliza el título de la gráfica
+  
+  theme(plot.title = element_text(face = "plain",
+                                  size = 11,
+                                  family = "Times"
+                                  )
+  ) 
+
+  
+  
+  # modificando la escala del eje y
+  
+  # scale_y_continuous(breaks = seq())
+```
+
+Fuente:
+
+
+
+
+
+## Gráfica de barras verticales comparativas
+
+El código que la genera es el siguiente:
+
+Figura 3.
+
+Universidad Nacional. Distribución de estudiantes y docentes según cantidad de cursos matriculados o impartidos. I ciclo 2026
+
+```{r}
+library(ggplot2) #cargando el paquete ggplot2
+
+# función ggplot(data, mapping, ...) + geom()
+
+# gráfica de barras la geometría corresponde a geom_bar()
+
+# definiendo la base de datos y la variable a graficar
+
+ggplot(data = salud_mental, 
+       aes(x = Cursos)) +
+  
+  # agregando la geometría (barras)
+  
+  geom_bar(aes(fill = Rol),
+           position = "dodge",
+           color = "black") +
+  
+  scale_fill_brewer(palette = "Blues",
+                    name = "Rol",
+                    breaks = c("Estudiante", "Profesor"),
+                    labels = c("Estudiante", "Profesor")
+                    ) +
+  
+  #O bien, 
+  #scale_fill_discrete(name="Sexo",
+  #                    breaks=c("h", "m"),
+  #                    labels=c("Hombre", "Mujer")) +
+  
+  
+  # rotulando los ejes y agregando título 
+  
+  labs(x = "Cursos",
+       y = "Cantidad",
+       title = "") +
+  
+  # personaliza el fondo de la gráfica
+  theme_bw() + 
+  
+  theme(plot.background = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank()) +
+  
+  # personaliza los ejes de la gráfica
+  
+  # la línea de los ejes
+  theme(axis.line = element_line(color = "black")) +
+  
+  # el texto de los ejes
+  theme(axis.text.x = element_text(face = "plain", 
+                                   size = 11, 
+                                   family = "Times", 
+                                   angle = 0, 
+                                   color = "black"),
+        axis.text.y = element_text(face = "plain", 
+                                   size=11, 
+                                   family = "Times", 
+                                   angle = 0, 
+                                   color = "black", 
+                                   hjust = 1),
+        axis.title = element_text(face = "bold", 
+                                  size = 11, 
+                                  family = "Times")
+  ) +
+  
+  # personaliza el título de la gráfica
+  
+  theme(plot.title = element_text(face = "plain",
+                                  size = 11,
+                                  family = "Times",
+                                  hjust = 0.5
+                                  )
+  ) +
+
+  # la escala de los ejes 
+  
+  scale_x_continuous(breaks = seq(from = 1, to = 7, by = 1))+
+  scale_y_continuous(breaks = seq(from = 0, to = 15, by = 3))
+
+```
+
+Fuente:
+
+
+# Histograma (variable Puntaje)
+
+Figura 4. 
+
+Universidad Nacional. Distribución de docentes según puntaje de bienestar sicológico. I ciclo 2026
+
+
+```{r}
+# determinando los valores mínimo y máximo
+library(ggplot2)
+min(salud_mental$Puntaje_Bienestar[salud_mental$Rol=="Profesor"])
+max(salud_mental$Puntaje_Bienestar[salud_mental$Rol=="Profesor"])
+
+# definiendo la base de datos y la variable a graficar
+
+ggplot(data = salud_mental[salud_mental$Rol == "Profesor",], 
+       aes(x = Puntaje_Bienestar)) +
+ 
+  # agregando la geometría
+  geom_histogram(breaks = seq(from = 20, to = 100, by = 10), 
+                 col = 'black', 
+                 fill = 'green', 
+                 alpha = 0.4, 
+                 closed = "left") +
+  
+  # ver lista de colores en R con la función colors()
+  # rotulando los ejes y agregando título 
+  
+  labs(x = "Puntaje Bienestar",
+       y = "Cantidad",
+       title = "") +
+  
+  # personaliza el fondo de la gráfica
+  theme_bw() + 
+  
+  theme(plot.background = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank()) +
+  
+  # personaliza los ejes de la gráfica
+  
+  # la línea de los ejes
+  theme(axis.line = element_line(color = "black")) +
+  
+  # el texto de los ejes
+  theme(axis.text.x = element_text(face = "plain", 
+                                   size = 11, 
+                                   family = "", 
+                                   angle = 0, 
+                                   color = "black"),
+        axis.text.y = element_text(face = "plain", 
+                                   size = 11, 
+                                   family = "", 
+                                   angle = 0, 
+                                   color = "black", 
+                                   hjust = 1),
+        axis.title = element_text(face = "bold", 
+                                  size = 11, 
+                                  family = "")
+  ) +
+  
+  # personaliza el título de la gráfica
+  
+  theme(plot.title = element_text(face = "plain",
+                                  size = 11,
+                                  family = ""
+                                  )
+  ) +
+
+  # modificando la escala de los ejes
+  
+  scale_x_continuous(breaks = seq(from = 20, to = 100, by = 10)) +
+  scale_y_continuous(breaks = seq(0, 9, 3))
+  
+```
+
+Fuente: 
+
+
+
+# Polígono de frecuencias
+
+El código que lo genera es el siguiente.
+
+Figura 5. 
+
+Universidad Nacional. Distribución de docentes según puntaje de bienestar sicológico. I ciclo 2026
+
+```{r}
+# determinando los valores mínimo y máximo
+
+
+# definiendo la base de datos y la variable a graficar
+
+ggplot(data = salud_mental, 
+       aes(x = Puntaje_Bienestar)) +
+  
+  # agregando la geometría
+  geom_freqpoly(breaks = seq(from = 20, to = 100, by = 10), 
+                 col = 'black', 
+                 closed = "left") +
+  
+  stat_bin(breaks = seq(from = 20, to = 100, by = 10),
+           geom = "point",
+           position = "stack",
+           closed = "left"
+           ) +
+  
+  # ver lista de colores en R con la función colors()
+  # rotulando los ejes y agregando título 
+  
+  labs(x = "Puntaje de bienestar",
+       y = "Cantidad",
+       title = "") +
+  
+  # personaliza el fondo de la gráfica
+  theme_bw() + 
+  
+  theme(plot.background = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank()) +
+  
+  # personaliza los ejes de la gráfica
+  
+  # la línea de los ejes
+  theme(axis.line = element_line(color = "black")) +
+  
+  # el texto de los ejes
+  theme(axis.text.x = element_text(face = "plain", 
+                                   size = 10, 
+                                   family = "Times", 
+                                   angle = 0, 
+                                   color = "black"),
+        axis.text.y = element_text(face = "plain", 
+                                   size = 11, 
+                                   family = "Times", 
+                                   angle = 0, 
+                                   color = "black", 
+                                   hjust = 1),
+        axis.title = element_text(face = "bold", 
+                                  size = 11, 
+                                  family = "Times")
+  ) +
+  
+  # personaliza el título de la gráfica
+  
+  theme(plot.title = element_text(face = "plain",
+                                  size = 11,
+                                  family = "Times"
+                                  )
+  ) +
+
+  # modificando la escala de los ejes
+  
+  scale_x_continuous(breaks = seq(from = 15, to = 105, by = 10)) +
+  scale_y_continuous(breaks = seq(from = 0, to = 18, by = 3)) +
+  
+  annotate("segment", 
+           x = 15, 
+           xend = 105.5, 
+           y = 0, 
+           yend = 0,
+           colour = "black",
+           linewidth = 0.5)
+  
+  
+
+```
+
+Fuente:
+
