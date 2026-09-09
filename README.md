@@ -64,7 +64,7 @@ Repositorio de apuntes, prácticas y soluciones del curso de Probabilidad, organ
 
 ### A-B-C
 - [Lab 1.1](https://github.com/AxelAbarMe/Probabilidad/blob/main/I%20Part/Lab/Enunciado%201.md)
-- [Lab 1.2](https://github.com/AxelAbarMe/Probabilidad/blob/main/I%20Part/Lab/Enunciado%202.md)
+- [Lab 1.2](https://github.com/AxelAbarMe/Probabilidad/tree/main/I%20Part/Lab/Lab2)
 - [Lab 1.3](https://github.com/AxelAbarMe/Probabilidad/blob/main/I%20Part/Lab/Enunciado%203.md)
 
 ---
