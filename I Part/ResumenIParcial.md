@@ -186,7 +186,9 @@ $$\bar{x} = \frac{\sum_{i=1}^{n} x_i}{n} \qquad \mu = \frac{\sum_{i=1}^{N} x_i}{
 Es la medida de tendencia central más usada y conocida.
 
 **Media ponderada:** asigna distinta importancia (peso $w_i$) a cada dato:
+
 $$\bar{x}_w = \frac{\sum_{i=1}^{n} (x_i \cdot w_i)}{\sum_{i=1}^{n} w_i}$$
+
 Se usa cuando no todas las observaciones tienen la misma relevancia (ej. notas de un curso con porcentajes distintos por evaluación).
 
 ### Mediana
