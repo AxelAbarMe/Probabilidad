@@ -149,8 +149,8 @@ Grupos en los que se distribuye la información.
 ### Redondeo
 Proceso de aproximar un número a una cantidad de dígitos determinada.
 - **Usual:** si el valor a eliminar es mayor o igual a 5, se aumenta una unidad al último dígito conservado.
-- **Hacia arriba:** se conserva el último dígito deseado y se elimina el resto sin ajustar.
-- **Hacia abajo:** el último dígito se aumenta una unidad, excepto cuando va seguido de ceros.
+- **Hacia arriba:** el último dígito se aumenta una unidad, excepto cuando va seguido de ceros.
+- **Hacia abajo:** se conserva el último dígito deseado y se elimina el resto sin ajustar.
 
 ### Elementos de una distribución de frecuencia continua
 - **Límites de clase:** valores que definen una clase, separándola de la anterior y la posterior.
