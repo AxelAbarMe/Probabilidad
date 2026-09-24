@@ -478,3 +478,284 @@ $$P(X \leq 2/\lambda=1,5) = P(X=0)+P(X=1)+P(X=2) = F(2)$$
 > a) Si se selecciona una muestra al azar. ¿Cuál es la probabilidad de obtener más de 4 bacterias?
 > b) Si se selecciona al azar 10 muestras de agua de 100 ml. ¿Cuál es la probabilidad de que exactamente 3 muestras tengan un número de bacterias mayor a 4?
 > c) Si se selecciona al azar 7 muestras de agua de 100 ml. ¿Cuál es la probabilidad de que a lo sumo 5 muestras tengan un número de bacterias mayor a 4?
+
+# Variables aleatorias continuas
+
+## Definición
+Se dice que una variable $X$ es **continua** si su conjunto de posibles valores es un intervalo de números, esto es, si dados $a$ y $b$, $a < b$, cualquier número $x$, $a \leq x \leq b$ es posible.
+
+### Ejemplos de variables continuas
+- La profundidad de un lago.
+- La altura de una montaña.
+- La longitud de una carretera.
+
+## Función de densidad de probabilidad
+La distribución de probabilidad o función de densidad de probabilidad de una v.a. continua $X$, es una función $f(x)$ tal que para todo $a$ y $b$, $a \leq b$ se tiene que:
+
+$$P(a \leq X \leq b) = \int_a^b f(x)\,dx$$
+
+> Esto es, la probabilidad de que $X$ tome un valor en el intervalo $[a,b]$ es el área limitada por la curva de la función $f(x)$ (función de densidad de probabilidad), las rectas $x=a$, $x=b$ y el eje $X$.
+
+### Condiciones
+Si $f(x)$ es la función de densidad de probabilidad para una variable aleatoria continua $X$, se tiene que:
+- $f(x) \geq 0, \; \forall x$
+- $\displaystyle\int_{-\infty}^{+\infty} f(x)\,dx = 1$
+
+## Función acumulada de distribución
+Si $X$ es variable aleatoria continua con función de densidad de probabilidad $f(x)$, entonces la función acumulada de distribución de $X$ se denota como $F(x)$ y se define por:
+
+$$F(x) = P(X \leq x) = \int_{-\infty}^{x} f(t)\,dt$$
+
+> Para cada $x$, $F(x)$ representa el área bajo la curva de densidad a la izquierda de $x$.
+
+Si $X$ es una variable aleatoria continua con función de densidad de probabilidad $f(x)$ y función acumulada $F(x)$, entonces para cualesquiera dos valores $a$ y $b$ con $a < b$ tenemos que:
+
+$$P(a \leq X \leq b) = \int_a^b f(x)\,dx$$
+
+### Propiedades
+Si $X$ es variable aleatoria continua entonces para cualesquiera valores $a$ y $b$ con $a < b$ se tiene que:
+
+$$P(a \leq X \leq b) = P(a \leq X < b) = P(a < X \leq b) = P(a < X < b) = F(b) - F(a)$$
+
+Además,
+
+$$P(X \leq b) = P(X < b) = F(b)$$
+$$P(X \geq b) = P(X > b) = 1 - F(b)$$
+
+## Valor esperado de una v.a. continua
+Sea $X$ una variable aleatoria continua con función de densidad de probabilidad $f(x)$. El valor esperado de $X$ se denota por $E(X)$, $\mu_X$ o simplemente $\mu$ y se define por:
+
+$$\mu = E(X) = \int_{-\infty}^{+\infty} x \cdot f(x)\,dx$$
+
+## Varianza de una v.a. continua
+Sea $X$ una variable aleatoria continua con función de densidad de probabilidad $f(x)$. La varianza de $X$ se denota por $V(X)$ o $\sigma_X^2$ y se define por:
+
+$$\sigma_X^2 = V(X) = \int_{-\infty}^{+\infty} (x - E(X))^2 \cdot f(x)\,dx$$
+
+## Distribuciones de probabilidad para variables continuas
+Algunas distribuciones de probabilidad para variables continuas son:
+- Distribución uniforme continua.
+- Distribución normal.
+- Distribución normal estándar.
+- Distribución t–student.
+- Distribución chi-cuadrada.
+
+## Distribución normal
+
+Una variable $X$ tiene una distribución normal con parámetros $\mu$ y $\sigma$, donde $\mu \in \mathbb{R}$ y $\sigma > 0$, si su función de densidad está dada por:
+
+$$f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2} \quad \text{si } x \in \mathbb{R}$$
+
+*(Figura 1: curva normal en forma de campana para $\mu = 60$ y $\sigma = 6$, simétrica alrededor de $x=60$.)*
+
+### Características
+- Tiene perfil de campana y sus tres medidas principales de posición (media, moda y mediana) son iguales.
+- Es simétrica con respecto a su media.
+- La curva normal es decreciente uniformemente a partir del valor central.
+- El valor central de la curva normal es la media.
+
+### Cálculo de probabilidades
+Si $X$ es una variable aleatoria con distribución normal, entonces para cualesquiera $a$ y $b$ con $a < b$, se tiene que:
+
+$$P(a \leq X \leq b) = \int_a^b \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2} dx$$
+
+*(Figura 2: región sombreada representando $P(X \leq 61)$ para $\mu=60$ y $\sigma=6$.)*
+
+$$P(X \leq 61/\mu=60, \sigma=6) = \int_{-\infty}^{61} \frac{1}{6\sqrt{2\pi}} e^{-\frac{1}{2}\left(\frac{x-60}{6}\right)^2} dx$$
+
+### Ejemplo 1 (redes sociales)
+> El número de horas semanales que las personas dedican a sus redes sociales sigue una distribución normal con promedio 20 horas y desviación estándar 3,5 horas. Si se escoge una persona al azar, ¿cuál es la probabilidad de que su tiempo dedicado a las redes sociales sea:
+> a) entre 18 y 23 horas.
+> b) al menos 21 horas.
+> c) a lo sumo 20 horas.
+> d) determine la cantidad de horas dedicadas por el 15 % y el 70 % de las personas.
+
+*(Figura 3: curva normal para $\mu=20$ y $\sigma=3,5$.)*
+
+**a) Entre 18 y 23 horas**
+
+*(Figura 4: región sombreada $P(18 < X < 23)$ dado $\mu=20$ y $\sigma=3,5$.)*
+
+$$P(18 < X < 23/\mu=20,\sigma=3,5) = \int_{18}^{23} \frac{1}{3,5\sqrt{2\pi}} e^{-\frac{1}{2}\left(\frac{x-20}{3,5}\right)^2} dx = 0,5204$$
+
+**b) Al menos 21 horas**
+
+$$P(X \geq 21/\mu=20,\sigma=3,5) = 1 - F(21) = 1 - 0,6125 = 0,3875$$
+
+**c) A lo sumo 20 horas**
+
+$$P(X \leq 20/\mu=20,\sigma=3,5) = F(20) = 0,5000$$
+
+**d) Cantidad de horas dedicadas por el 15 % y el 70 % de las personas**
+
+Se piden hallar la región limitada por el cuantil 15 y el 70.
+
+Con R:
+```r
+qnorm(0.15, 20, 3.5)
+## [1] 16.37248
+qnorm(0.70, 20, 3.5)
+## [1] 21.8354
+```
+
+### Ejemplo 1 (usando R)
+> Repita el ejemplo anterior utilizando funciones de R.
+
+**a) Entre 18 y 23 horas**
+
+$$P(18 < X < 23/\mu=20,\sigma=3,5) = F(23) - F(18) = 0,8043 - 0,2839 = 0,5204$$
+
+```r
+pnorm(23, 20, 3.5) - pnorm(18, 20, 3.5)
+## [1] 0.5204624
+```
+
+**b) Al menos 21 horas**
+
+$$P(X \geq 21/\mu=20,\sigma=3,5) = 1 - F(21) = 1 - 0,6125 = 0,3875$$
+
+```r
+1 - pnorm(21, 20, 3.5)
+## [1] 0.3875485
+```
+
+**c) A lo sumo 20 horas**
+
+$$P(X \leq 20/\mu=20,\sigma=3,5) = F(20) = 0,5000$$
+
+```r
+pnorm(20, 20, 3.5)
+## [1] 0.5
+```
+
+**d) Cantidad de horas dedicadas por el 15 % y el 70 % de las personas**
+
+```r
+qnorm(0.15, 20, 3.5)
+## [1] 16.37248
+qnorm(0.70, 20, 3.5)
+## [1] 21.8354
+```
+
+### Ejemplo 2 (colesterol)
+> Suponga que el nivel de colesterol total en la sangre de un grupo de personas jóvenes sigue una distribución normal con promedio de 190 mg/dl con desviación estándar de 19 mg/dl. Con base en dicha información calcule:
+> a) ¿qué porcentaje de personas tienen un nivel de colesterol total menor a 200 mg/dl?
+> b) ¿cuál es la probabilidad que una persona joven elegida al azar presente un nivel de colesterol total entre 175 y 200 mg/dl?
+> c) Determine el nivel de colesterol total mínimo del 30 % de las personas con el nivel de colesterol más alto.
+> d) Si se tienen 200 personas jóvenes, ¿cuántas tendrán un nivel de colesterol total superior a 220 mg/dl?
+> e) Determine el nivel de colesterol total máximo del 40 % de las personas con el nivel de colesterol más bajo.
+> f) Determine los niveles de colesterol total que presenta el 40 % central de las personas.
+
+**a) Porcentaje con colesterol menor a 200 mg/dl**
+
+Debe hallarse $P(X < 200/\mu=190,\sigma=19) = F(200)$
+
+```r
+pnorm(200, 190, 19)
+## [1] 0.7006656
+```
+
+**b) Probabilidad entre 175 y 200 mg/dl**
+
+Debe hallarse $P(175 < X < 200/\mu=190,\sigma=19) = F(200) - F(175)$
+
+$$P(175 < X < 200/\mu=190,\sigma=19) = 0,7007 - 0,2149$$
+
+**c) Nivel mínimo del 30 % con colesterol más alto**
+
+```r
+qnorm(0.70, 190, 19)
+## [1] 199.9636
+```
+
+**d) Cantidad de personas con colesterol superior a 220 mg/dl (de 200 personas)**
+
+Primero se obtiene $P(X > 220/\mu=190,\sigma=19) = 1 - F(220)$.
+
+Luego, para obtener la cantidad de personas se multiplica el total de personas por la probabilidad de que se cumpla la característica:
+
+```r
+N <- 200; cantidad <- 200 * 0.0571
+cantidad
+## [1] 11.42
+```
+
+## Distribución normal estándar
+
+Una variable aleatoria $X$ tiene una distribución normal estándar si $\mu = 0$ y $\sigma = 1$.
+
+Si una variable $X$ tiene una distribución normal con parámetros $\mu$ y $\sigma$, entonces la variable
+
+$$Z = \frac{X - \mu}{\sigma}$$
+
+es una v.a. con distribución normal estándar.
+
+### Ejemplo (redes sociales, usando estandarización)
+> El número de horas semanales que las personas dedican a sus redes sociales sigue una distribución normal con promedio 20 horas y desviación estándar 3,5 horas. Si se escoge una persona al azar, ¿cuál es la probabilidad de que su tiempo dedicado a las redes sociales sea:
+> a) entre 18 y 23 horas.
+> b) al menos 21 horas.
+> c) a lo sumo 20 horas.
+> d) determine la cantidad de horas dedicadas por el 15 % y el 70 % de las personas.
+
+**a) Entre 18 y 23 horas**
+
+$$P(18 < X < 23/\mu=20,\sigma=3,5)$$
+
+$$x = 18 \Rightarrow z = \frac{18-20}{3,5} \Rightarrow z = -0,57$$
+$$x = 23 \Rightarrow z = \frac{23-20}{3,5} \Rightarrow z = 0,86$$
+
+Así,
+
+$$P(18 < X < 23/\mu=20,\sigma=3,5) = P(-0,57 < Z < 0,86) = F(0,86) - F(-0,57)$$
+
+```r
+pnorm(0.86) - pnorm(-0.57)
+## [1] 0.5207666
+```
+
+**b) Al menos 21 horas**
+
+$$x = 21 \Rightarrow z = \frac{21-20}{3,5} \Rightarrow z = 0,2857 \Rightarrow z = 0,29$$
+
+$$P(X \geq 21/\mu=20,\sigma=3,5) = P(Z \geq 0,29) = 1 - F(0,29)$$
+
+```r
+1 - pnorm(0.29)
+## [1] 0.3859081
+```
+
+**c) A lo sumo 20 horas**
+
+$$x = 20 \Rightarrow z = \frac{20-20}{3,5} \Rightarrow z = 0,00$$
+
+$$P(X \leq 20/\mu=20,\sigma=3,5) = P(Z \leq 0,00) = F(0,00)$$
+
+```r
+pnorm(0)
+## [1] 0.5
+```
+
+**d) Cantidad de horas dedicadas por el 15 % y el 70 % de las personas**
+
+Recordando que $Z = \dfrac{X-\mu}{\sigma}$:
+
+```r
+qnorm(0.15)
+## [1] -1.036433
+```
+
+$$z = -1,04 \Rightarrow -1,03 = \frac{X-20}{3,5} \Rightarrow -1,03 \cdot 3,5 + 20 = X \Rightarrow X = 16,36$$
+
+```r
+qnorm(0.70)
+## [1] 0.5244005
+```
+
+$$z = 0,52 \Rightarrow 0,52 = \frac{X-20}{3,5} \Rightarrow 0,52 \cdot 3,5 + 20 = X \Rightarrow X = 21,82$$
+
+### Ejemplo propuesto (horas de estudio)
+> El número de horas semanales que estudia una población de 140 estudiantes de una universidad determinada sigue una distribución normal con promedio 15 horas y desviación estándar 2,5 horas. Si se escoge un estudiante al azar, ¿cuál es la probabilidad de que estudie:
+> a) entre 12 y 17 horas.
+> b) al menos 14 horas.
+> c) a lo sumo 13 horas.
+> d) ¿cuántas horas estudia el 50 % central de las personas?
