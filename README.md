@@ -25,7 +25,7 @@ Repositorio de apuntes, prácticas y soluciones del curso de Probabilidad, organ
 
 ### G-H-I
 - [Resumen 3.1 { Estimación estadística }](https://github.com/AxelAbarMe/Probabilidad/blob/main/II%20Part/Teoria/Estimaci%C3%B3n%20estad%C3%ADstica.md) — Estimación puntual e intervalos de confianza.
-- [Resumen 3.2 { Teoría de la desición }](https://github.com/AxelAbarMe/Probabilidad/blob/main/II%20Part/Teoria/Teor%C3%ADa%20de%20la%20decisi%C3%B3n.md) — Fundamentos de la toma de decisiones bajo incertidumbre.
+- [Resumen 3.2 { Teoría de la decisión }](https://github.com/AxelAbarMe/Probabilidad/blob/main/II%20Part/Teoria/Teor%C3%ADa%20de%20la%20decisi%C3%B3n.md) — Fundamentos de la toma de decisiones bajo incertidumbre.
 - [Resumen 3.3 { Regresión lineal simple y correlación }](https://github.com/AxelAbarMe/Probabilidad/blob/main/II%20Part/Teoria/Regresi%C3%B3n%20lineal%20simple%20y%20correlaci%C3%B3n.md) — Relación entre variables y ajuste lineal.
 
 ---
