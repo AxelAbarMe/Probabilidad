@@ -37,25 +37,6 @@ Repositorio de apuntes, prácticas y soluciones del curso de Probabilidad, organ
 - [Practica 1.1](https://github.com/AxelAbarMe/Probabilidad/blob/main/I%20Part/PracticasTeoricas/Practica%201.md)
 - [Practica 1.2](https://github.com/AxelAbarMe/Probabilidad/blob/main/I%20Part/PracticasTeoricas/Practica%202.md)
 - [Practica 1.3](https://github.com/AxelAbarMe/Probabilidad/blob/main/I%20Part/PracticasTeoricas/Practica%203.md)
-- [Practica 1.4](https://github.com/AxelAbarMe/Probabilidad/blob/main/I%20Part/PracticasTeoricas/Practica%204.md)
-- [Practica 1.5](https://github.com/AxelAbarMe/Probabilidad/blob/main/I%20Part/PracticasTeoricas/Practica%205.md)
-
----
-
-### D-E-F
-- [Practica 2.1](https://github.com/AxelAbarMe/Probabilidad/blob/main/II%20Part/PracticasTeoricas/Practica%201.md)
-- [Practica 2.2](https://github.com/AxelAbarMe/Probabilidad/blob/main/II%20Part/PracticasTeoricas/Practica%202.md)
-- [Practica 2.3](https://github.com/AxelAbarMe/Probabilidad/blob/main/II%20Part/PracticasTeoricas/Practica%203.md)
-- [Practica 2.4](https://github.com/AxelAbarMe/Probabilidad/blob/main/II%20Part/PracticasTeoricas/Practica%204.md)
-
----
-
-### G-H-I
-- [Practica 3.1](https://github.com/AxelAbarMe/Probabilidad/blob/main/II%20Part/PracticasTeoricas/Practica%205.md)
-- [Practica 3.2](https://github.com/AxelAbarMe/Probabilidad/blob/main/II%20Part/PracticasTeoricas/Practica%206.md)
-- [Practica 3.3](https://github.com/AxelAbarMe/Probabilidad/blob/main/II%20Part/PracticasTeoricas/Practica%207.md)
-- [Practica 3.4](https://github.com/AxelAbarMe/Probabilidad/blob/main/II%20Part/PracticasTeoricas/Practica%208.md)
-- [Practica 3.5](https://github.com/AxelAbarMe/Probabilidad/blob/main/II%20Part/PracticasTeoricas/Practica%209.md)
 
 ---
 
@@ -65,31 +46,4 @@ Repositorio de apuntes, prácticas y soluciones del curso de Probabilidad, organ
 ### A-B-C
 - [Lab 1.1](https://github.com/AxelAbarMe/Probabilidad/blob/main/I%20Part/Lab/Enunciado%201.md)
 - [Lab 1.2](https://github.com/AxelAbarMe/Probabilidad/tree/main/I%20Part/Lab/Lab2)
-- [Lab 1.3](https://github.com/AxelAbarMe/Probabilidad/blob/main/I%20Part/Lab/Enunciado%203.md)
 
----
-
-### D-E-F
-- [Lab 2.1](https://github.com/AxelAbarMe/Probabilidad/blob/main/II%20Part/Lab/Enunciado%201.md)
-- [Lab 2.2](https://github.com/AxelAbarMe/Probabilidad/blob/main/II%20Part/Lab/Enunciado%202.md)
-- [Lab 2.3](https://github.com/AxelAbarMe/Probabilidad/blob/main/II%20Part/Lab/Enunciado%203.md)
-
----
-
-### G-H-I
-- [Lab 3.1](https://github.com/AxelAbarMe/Probabilidad/blob/main/II%20Part/Lab/Enunciado%204.md)
-- [Lab 3.2](https://github.com/AxelAbarMe/Probabilidad/blob/main/II%20Part/Lab/Enunciado%205.md)
-- [Lab 3.3](https://github.com/AxelAbarMe/Probabilidad/blob/main/II%20Part/Lab/Enunciado%206.md)
-
----
-
-## ✅ Soluciones Labs/Exámenes
-> Solucionarios oficiales de labs, quices y parciales de ambas partes del curso.
-
-- [Lab 1](https://github.com/AxelAbarMe/Probabilidad/tree/main/I%20Part/Solucionarios/Labs) — Solución del primer lab.
-- [Parcial 1](https://github.com/AxelAbarMe/Probabilidad/tree/main/I%20Part/Solucionarios/Exam) — Solución del primer parcial.
-- [Quiz 1](https://github.com/AxelAbarMe/Probabilidad/tree/main/II%20Part/Solucionarios/Quiz) — Solución del primer quiz.
-- [Parcial 2](https://github.com/AxelAbarMe/Probabilidad/tree/main/II%20Part/Solucionarios/Exam) — Solución del segundo parcial.
-- [Lab 2](https://github.com/AxelAbarMe/Probabilidad/tree/main/II%20Part/Solucionarios/Labs) — Solución del segundo lab.
-
----
