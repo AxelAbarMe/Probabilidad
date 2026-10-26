@@ -8,9 +8,9 @@
 
 Cuando la desviación estándar σ se conoce, el intervalo de confianza para la media se estima con la función `z.test(x, sigma.x, conf.level, ...)$conf` del paquete `BSDA`, donde:
 
-* **`x`**: vector de datos.
-* **`sigma.x`**: valor de la desviación estándar poblacional.
-* **`conf.level`**: nivel de confianza.
+- **`x`**: vector de datos.
+- **`sigma.x`**: valor de la desviación estándar poblacional.
+- **`conf.level`**: nivel de confianza.
 
 ### Ejemplo
 Considere la base de datos `base_creles` y determine un intervalo de confianza del 95% para estimar el índice de masa corporal promedio real de las personas de 60 años y más. Suponga que para esta variable se conoce que la desviación estándar es de 4 kg/m².
@@ -38,6 +38,8 @@ z.test(x = base_creles$imc, sigma.x = 4, conf.level = 0.98)$conf
 ## [1] 0.98
 
 ```
+
+**Interpretación:** Con un nivel de confianza del 98%, se estima que el índice de masa corporal (IMC) promedio real de las personas de 60 años y más se encuentra entre 24.38 kg/m² y 27.02 kg/m².
 
 ---
 
@@ -67,6 +69,8 @@ t.test(x = base_creles$peso[base_creles$sexo == "M"],
 
 ```
 
+**Interpretación:** Con un nivel de confianza del 98%, se estima que el peso promedio real de los hombres de 60 años y más se encuentra entre 64.71 kg y 77.59 kg.
+
 Además, si se desea obtener la estimación puntual para la media poblacional puede utilizarse el código `t.test(x, conf.level, ...)$estimate`
 
 ### Ejemplo
@@ -86,6 +90,8 @@ t.test(x = base_creles$peso[base_creles$sexo == "M"],
 ##  71.14625
 
 ```
+
+**Interpretación:** La estimación puntual para el peso promedio poblacional de los hombres de 60 años y más es de 71.15 kg.
 
 ---
 
@@ -114,6 +120,8 @@ t.test(x = base_creles$muac, conf.level = 0.95)$conf
 
 ```
 
+**Interpretación:** Con un nivel de confianza del 95%, se estima que la circunferencia del brazo promedio real de las personas de 60 años y más se ubica entre 27.62 cm y 29.70 cm.
+
 Para determinar la estimación del ejemplo anterior, se puede colocar el siguiente segmento:
 
 ```r
@@ -128,6 +136,8 @@ mean of x
   28.66
 
 ```
+
+**Interpretación:** La estimación puntual para la circunferencia del brazo promedio real de las personas de 60 años y más es de 28.66 cm.
 
 ---
 
@@ -160,6 +170,8 @@ c((Li = p - E), (Ls = p + E))
 
 ```
 
+**Interpretación:** Con un nivel de confianza del 95%, se estima mediante el método de Wald que la proporción real de mujeres de 60 años y más se encuentra entre 40.19% y 67.81% (0.4019 y 0.6781).
+
 ### Ejemplo
 
 Considere la base de datos `base_creles` y determine un intervalo de confianza del 95% para estimar la proporción real de personas de 60 años y más con un peso mayor a 50 kg.
@@ -182,6 +194,8 @@ c((Li = p - E), (Ls = p + E))
 ## [1] 0.7899269 0.9700731
 
 ```
+
+**Interpretación:** Con un 95% de confianza, se estima mediante el método de Wald que la proporción real de personas de 60 años y más con un peso superior a 50 kg se encuentra entre 78.99% y 97.01% (0.7899 y 0.9701).
 
 ---
 
@@ -207,6 +221,8 @@ prop.test(x = length(which(base_creles$peso > 50)),
 
 ```
 
+**Interpretación:** Con un nivel de confianza del 95%, mediante el método de Wilson se estima que la proporción real de personas de 60 años y más con un peso superior a 50 kg está comprendida entre 75.00% y 95.03% (0.7500 y 0.9503).
+
 ---
 
 Además, si se desea obtener la estimación puntual de la proporción puede utilizarse la función `prop.test(x, n, conf.level, ...)$estimate`.
@@ -227,4 +243,7 @@ prop.test(x = length(which(base_creles$peso > 50)),
 ```text
 ##    p 
 ## 0.88
+
 ```
+
+**Interpretación:** La estimación puntual para la proporción poblacional de personas de 60 años y más con un peso mayor a 50 kg es de 0.88 (es decir, el 88%).
