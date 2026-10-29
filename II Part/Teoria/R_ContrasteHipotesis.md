@@ -1,6 +1,8 @@
 # Contraste de hipótesis con R
+
 **Autor:** E. A.
-**Fecha:** 2026-05-28  
+
+**Fecha:** 2026-10-28
 
 ---
 
@@ -212,12 +214,12 @@ t.test(x = base_creles$imc[base_creles$sexo=="M"],
 
 ```r
 # Grados de libertad = n - 1 = 23 - 1 = 22
-t_crit <- qt(1 - 0.03, df = 22) # 1.9742
+t_crit <- qt(1 - 0.03, df = 22) # 1.982911
 c(t_calculado = 3.104, t_critico = t_crit)
 
 ```
 
-**Conclusión:** Como el p-valor (0.002588) es menor que α = 0.03 (y t_calculado = 3.104 > t_crítico = 1.9742), se rechaza la hipótesis nula H₀. Con un 97% de confianza se concluye que el IMC promedio de los hombres es significativamente superior a 24 kg/m².
+**Conclusión:** Como el p-valor (0.002588) es menor que α = 0.03 (y t_calculado = 3.104 > t_crítico = 1.9829), se rechaza la hipótesis nula H₀. Con un 97% de confianza se concluye que el IMC promedio de los hombres es significativamente superior a 24 kg/m².
 
 ---
 
@@ -277,7 +279,7 @@ z.test(x = base_creles$cc[base_creles$sexo=="M"],
 
 ```r
 alpha <- 0.02
-z_crit <- qnorm(1 - alpha/2) # Valor crítico bilaterial 2.3263
+z_crit <- qnorm(1 - alpha/2) # Valor crítico bilateral 2.3263
 c(z_calculado = 1.0688, z_critico_bilateral = z_crit)
 
 ```
@@ -295,7 +297,7 @@ Para el caso de σ desconocida y muestra grande se utiliza la función `t.test(x
 * **`alternative`**: representa la hipótesis alternativa: “two.sided”, “greater” o “less”.
 * **`mu`**: representa el valor de μ₁ - μ₂, o bien, δ₀.
 * **`conf.level`**: nivel de confianza de la prueba.
-* **`var.equal`**: indica si las variancias poblacionales son iguales
+* **`var.equal`**: indica si las variancias poblacionales son iguales.
 
 #### Ejemplo
 
@@ -421,7 +423,7 @@ t.test(x = base_creles$imc[base_creles$sexo=="M"],
 **Cálculo del estadístico de prueba y valor crítico:**
 
 ```r
-t_crit <- qt(1 - 0.03/2, df = 48) # 2.2415
+t_crit <- qt(1 - 0.03/2, df = 48) # 2.236518
 c(t_calculado = 1.076, t_critico_bilateral = t_crit)
 
 ```
@@ -503,14 +505,14 @@ Para el caso de la diferencia de proporciones poblacionales se utiliza la funci�
 
 donde:
 
-* **`x`**: un vector con la cantidad de elementos de cada muestra
+* **`x`**: un vector con la cantidad de elementos de cada muestra.
 * **`n`**: vector con el total de datos de CADA muestra.
 * **`alternative`**: representa la hipótesis alternativa: “two.sided”, “greater” o “less”.
 * **`p`**: representa el valor de P₁ - P₂, o bien, el δ₀.
 * **`conf.level`**: nivel de confianza de la prueba.
 * **`correct`**: indica si es necesario la corrección por continuidad cuando el δ = 0.
 
-### Ejemplo
+### Ejemplo (con prop.test)
 
 Se quiere determinar si la proporción de hombres y de mujeres adultos mayores es la misma. Utilice un nivel de significancia de 5%.
 
@@ -562,23 +564,29 @@ c(Chi2_calculado = 0.36, Z_critico_bilateral = z_crit)
 
 ---
 
-### Proporciones con δ ≠ 0
+### Proporciones con δ ≠ 0 (Cálculo directo de Z y Valor p)
 
-En caso de δ ≠ 0 se trabaja directamente calculando el estadístico Z con la fórmula:
-
-Por lo tanto, el estadístico de prueba está dado por z, tal que:
+El estadístico de prueba está dado por z, tal que:
 
 z = (p̂₁ - p̂₂ - δ₀) / √[ p̂₁(1 - p̂₁)/n₁ + p̂₂(1 - p̂₂)/n₂ ]
 
+Cuando δ₀ = 0 se tiene que:
+
+z = (p̂₁ - p̂₂ - δ₀) / √[ p̂(1 - p̂)/n₁ + p̂(1 - p̂)/n₂ ]
+
+donde p̂ = (X₁ + X₂) / (n₁ + n₂)
+
 #### Ejemplo
 
-Se desea conocer si la proporción de hombres adultos mayores con imc > 30 es superior a 5% a la proporción de mujeres adultas mayores con imc > 30. Utilice un nivel de significancia de 5%.
+Considere que desea conocerse si la proporción de hombres adultos mayores con imc > 30 es superior a 5% a la proporción de mujeres adultas mayores con imc > 30. Utilice un nivel de significancia de 5%.
 
 **Planteamiento de hipótesis:**
 
 H₀: P₁ - P₂ ≤ 0.05 (La diferencia en la proporción de IMC > 30 entre hombres y mujeres es menor o igual al 5%)
 
 H₁: P₁ - P₂ > 0.05 (La proporción de hombres con IMC > 30 supera en más de 5% a la de mujeres)
+
+**Estadístico de prueba:**
 
 ```r
 alpha <- 0.05; delta0 <- 0.05; 
@@ -591,17 +599,39 @@ num <- p1 - p2 - delta0
 den <- sqrt(p1*(1 - p1)/n1 + p2*(1 - p2)/n2)
 z <- num/den
 zalpha <- qnorm(1 - alpha)
-p_val <- 1 - pnorm(z)
-
-c(Z_critico = zalpha, Z_calculado = z, P_valor = p_val)
+c(zalpha, z)
 
 ```
 
 **Resultado:**
 
 ```text
-## [1] 1.6448536 0.9986842 0.1589710
+## [1] 1.6448536 0.9986842
 
 ```
 
-**Conclusión:** Puesto que el estadístico de prueba z_calculado = 0.9986842 es menor que el valor crítico z_alpha = 1.6448536 (y el p-valor = 0.158971 > 0.05), no se rechaza H₀. No hay evidencia suficiente para afirmar que la proporción de hombres con obesidad (IMC > 30) supere en más de un 5% a la proporción de mujeres.
+**Valor p:**
+
+```r
+alpha <- 0.05; delta0 <- 0.05; 
+x1 <- length(which(base_creles$sexo == "M" & base_creles$imc > 30))
+x2 <- length(which(base_creles$sexo == "F" & base_creles$imc > 30))
+n1 <- length(which(base_creles$sexo == "M"))
+n2 <- length(which(base_creles$sexo == "F"))
+p1 <- x1/n1; p2 <- x2/n2
+num <- p1 - p2 - delta0
+den <- sqrt(p1*(1 - p1)/n1 + p2*(1 - p2)/n2)
+z <- num/den
+p <- 1 - pnorm(abs(z))
+p
+
+```
+
+**Resultado:**
+
+```text
+## [1] 0.1589738
+
+```
+
+**Conclusión:** Puesto que el estadístico de prueba z_calculado = 0.9986842 es menor que el valor crítico z_alpha = 1.6448536 (y el p-valor = 0.1589738 > 0.05), no se rechaza H₀. No hay evidencia estadística suficiente para afirmar que la proporción de hombres con obesidad (IMC > 30) supere en más de un 5% a la proporción de mujeres.
